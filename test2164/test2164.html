@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="n">
+    <button onclick="start()">카드섞기</button>
+    <div id="result">마지막에 남은 카드는?</div>
+
+<script>
+    const start = () => {
+        const inputN = document.querySelector('#n').value        
+        const result = solution(inputN)        
+        document.getElementById('result').innerText = result
+    }
+    const solution = (N) => {
+        const cardArr = []
+        for(let i = 1; i <= N; i++){
+            cardArr.push(i)            
+        }
+        console.log('카드 배분', cardArr)
+        while(true){                        
+            cardArr.shift()
+            console.log('맨 위에 있는 카드 버리기', cardArr)
+            if(cardArr.length <= 1){
+                break
+            }
+            cardArr.push(cardArr.shift())                        
+            console.log('맨 위에 있는 카드 뒤로 보내기', cardArr)
+        }
+        console.log('마지막 한장!', cardArr)        
+        return cardArr.length ? cardArr.shift() : '카드가 없습니다...'
+    }    
+</script>
+</body>
+</html>
