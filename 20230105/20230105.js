@@ -5,3 +5,18 @@ const solution = (array) => {
     new Set(array.filter(value => value > 0).sort((a, b) => a - b)).forEach(value => { if(result !== value) return; result++; })
     return result;
 };
+
+const solution2 = (array) => {           
+    let result = 1;
+    let temp = 0;
+    while(result !== temp){
+        for(let i = 0; i < array.length; i++){
+            if(result === array[i]){
+                result++
+                break;
+            }            
+        }
+        temp++
+    }    
+    return result
+}
