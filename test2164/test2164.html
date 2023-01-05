@@ -1,40 +1,80 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <input type="text" id="n">
-    <button onclick="start()">카드섞기</button>
-    <div id="result">마지막에 남은 카드는?</div>
 
-<script>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" id="n">
+  <button onclick="start()">카드섞기</button>
+  <div id="result">마지막에 남은 카드는?</div>
+
+  <script>
     const start = () => {
-        const inputN = document.querySelector('#n').value        
-        const result = solution(inputN)        
-        document.getElementById('result').innerText = result
+      const inputN = document.querySelector('#n').value
+      const result = solution(inputN)
+      document.getElementById('result').innerText = result
     }
     const solution = (N) => {
-        const cardArr = []
-        for(let i = 1; i <= N; i++){
-            cardArr.push(i)            
+      class Node {
+        constructor(value) {
+          this.value = value,
+          this.next = null
         }
-        console.log('카드 배분', cardArr)
-        while(true){                        
-            cardArr.shift()
-            console.log('맨 위에 있는 카드 버리기', cardArr)
-            if(cardArr.length <= 1){
-                break
-            }
-            cardArr.push(cardArr.shift())                        
-            console.log('맨 위에 있는 카드 뒤로 보내기', cardArr)
+      }
+
+      class LinkedList {
+        constructor() {
+          this.head = null,
+          this.tail = null,
+          this.size = 0
         }
-        console.log('마지막 한장!', cardArr)        
-        return cardArr.length ? cardArr.shift() : '카드가 없습니다...'
-    }    
-</script>
+
+        push(value) {
+          const node = new Node(value)
+          if (this.size === 0) {
+            this.head = node
+            this.tail = node
+          } else {
+            const temp = this.tail
+            this.tail = node
+            temp.next = this.tail
+          }
+          this.size++
+        }
+
+        shift() {
+          if(this.size <= 1){
+            const temp = this.head.value
+            this.head = null
+            this.tail = null
+            this.size = 0
+            return temp
+          } else {
+            const temp = this.head.value
+            this.head = this.head.next
+            this.size--
+            return temp
+          }        
+        }
+      }
+
+      const test = new LinkedList()      
+      for (let i = 1; i <= N; i++) {
+        test.push(i)
+      }
+
+      while(test.size > 1){        
+        test.shift()        
+        test.push(test.shift())         
+      }
+      return test.head.value           
+    }   
+  </script>
 </body>
+
 </html>
