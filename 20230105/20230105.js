@@ -6,17 +6,17 @@ const solution = (array) => {
     return result;
 };
 
-const solution2 = (array) => {           
-    let result = 1;
-    let temp = 0;
-    while(result !== temp){
-        for(let i = 0; i < array.length; i++){
-            if(result === array[i]){
-                result++
-                break;
-            }            
-        }
-        temp++
-    }    
-    return result
-}
+const solution2 = (array) => {
+  let result = 1;
+  let temp;
+  do {
+    temp = result;
+    for (let i = 0; i < array.length; i++) {
+      if (result === array[i]) {
+        result++;
+        break;
+      }
+    }
+  } while (result !== temp);
+  return result;
+};
