@@ -10,7 +10,7 @@
     const timeTable = [{personnel: 1, timeRate: 1}, {personnel: 5, timeRate: 0.5}, {personnel: 10, timeRate: 0.25}, {personnel: 20, timeRate: 0.1}]
     const timeInfo = timeTable.find(timeInfo => timeInfo.personnel >= b && b)
     const timePer = timeInfo?.timeRate || (b > 20 ? 0.05 : 0)
-    return volunteers.find(volunteer => volunteer.number === a).time * timePer || 0
+    return volunteers.find(volunteer => volunteer.number === a)?.time * timePer || 0
   }
 
   console.log(solution(3, 1));
