@@ -6,7 +6,8 @@
 <body>
 <script>
   function solution(a){
-    return a > 12 ? Math.ceil(a / 12) : a ? 1 : 0
+    const divisionCount = 12
+    return Math.ceil(a / divisionCount)
   }
   console.log(solution(178))
 </script>
