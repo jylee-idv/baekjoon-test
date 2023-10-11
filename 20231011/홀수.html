@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  function solution(arr){
+    let sum=0, min=1000;
+    arr.forEach((value) => {
+      sum += value % 2 !== 0 ? value : 0
+      min = value % 2 && min > value ? value : min
+    })
+    return [sum, min];
+  }
+
+  arr=[12, 77, 38, 41, 53, 92, 85];
+  console.log(solution(arr));
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  function solution(a){
+    return new Array(+a).fill(1).reduce((previousValue, currentValue, currentIndex) => previousValue + currentIndex + 1)
+  }
+  console.log(solution(10));
+</script>
+
+</body>
+</html>
