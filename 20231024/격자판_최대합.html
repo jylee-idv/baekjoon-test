@@ -1,0 +1,36 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(arr) {
+    let answer = Number.MIN_SAFE_INTEGER;
+    let n = arr.length;
+    let sum1 = 0, sum2 = 0, sum3 = 0, sum4 = 0
+    arr.forEach((value, index1) => {
+      let temp1= 0, temp2 = 0
+      value.forEach((value2, index2) => {
+        temp1 += value2
+        temp2 += arr[index2][index1]
+      })
+      sum1 = Math.max(sum1, temp1)
+      sum2 = Math.max(sum2, temp2)
+      sum3 +=  arr[index1][index1]
+      sum4 +=  arr[index1][n - index1 -1]
+    })
+    answer = Math.max(sum1, sum2, sum3, sum4)
+    return answer;
+  }
+
+  let arr =
+    [[10, 13, 10, 12, 15],
+      [12, 39, 30, 23, 11],
+      [11, 25, 50, 53, 15],
+      [19, 27, 29, 37, 27],
+      [19, 13, 30, 13, 19]];
+  console.log(solution(arr));
+</script>
+</body>
+</html>
