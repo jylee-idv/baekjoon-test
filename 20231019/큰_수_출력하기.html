@@ -5,12 +5,12 @@
 </head>
 <body>
 <script>
-  function solution(n, arr){
-    return arr.filter((value, index, array) => !index || array[index - 1] <= n);
+  function solution(arr){
+    return arr.filter((value, index, array) => !index || array[index - 1] <= arr.length);
   }
 
   let arr=[7, 3, 9, 5, 6, 12];
-  console.log(solution(6, arr));
+  console.log(solution(arr));
 </script>
 </body>
 </html>
