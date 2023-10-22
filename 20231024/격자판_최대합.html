@@ -6,22 +6,20 @@
 <body>
 <script>
   function solution(arr) {
-    let answer = Number.MIN_SAFE_INTEGER;
     let n = arr.length;
     let sum1 = 0, sum2 = 0, sum3 = 0, sum4 = 0
     arr.forEach((value, index1) => {
       let temp1= 0, temp2 = 0
       value.forEach((value2, index2) => {
-        temp1 += value2
-        temp2 += arr[index2][index1]
+        temp1 += value2 // 가로 합 계산
+        temp2 += arr[index2][index1] // 세로 합 계산
       })
-      sum1 = Math.max(sum1, temp1)
-      sum2 = Math.max(sum2, temp2)
-      sum3 +=  arr[index1][index1]
-      sum4 +=  arr[index1][n - index1 -1]
+      sum1 = Math.max(sum1, temp1) // 가로 합
+      sum2 = Math.max(sum2, temp2) // 세로 합
+      sum3 +=  arr[index1][index1] // 좌상 대각선 합
+      sum4 +=  arr[index1][n - index1 -1] // 우상 대각선 합
     })
-    answer = Math.max(sum1, sum2, sum3, sum4)
-    return answer;
+    return Math.max(sum1, sum2, sum3, sum4);
   }
 
   let arr =
