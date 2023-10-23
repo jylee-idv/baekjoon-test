@@ -6,7 +6,7 @@
 <body>
 <script>
   function solution(arr){
-    return arr.filter((value, index, array) => !index || array[index - 1] <= arr.length);
+    return arr.filter((value, index, array) => !index || array[index - 1] <= array[index]);
   }
 
   let arr=[7, 3, 9, 5, 6, 12];
