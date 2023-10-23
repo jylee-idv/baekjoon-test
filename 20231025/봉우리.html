@@ -1,0 +1,31 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(arr){
+    let answer=0;
+    arr.forEach((value1, index1) => {
+      value1.forEach((value2, index2) => {
+        const xm = arr[index1][index2 - 1] || 0
+        const xp = arr[index1][index2 + 1] || 0
+        const ym = index1 - 1 >= 0 ? arr[index1 - 1][index2] : 0
+        const yp = index1 + 1 < arr.length ? arr[index1 + 1][index2] : 0
+        if(xm < value2 && xp < value2 && ym < value2 && yp < value2) return (answer++)
+      })
+    })
+
+    return answer;
+  }
+
+  let arr=[[5, 3, 7, 2, 3],
+    [3, 7, 1, 6, 1],
+    [7, 2, 5, 3, 4],
+    [4, 3, 6, 4, 1],
+    [8, 7, 3, 5, 2]];
+  console.log(solution(arr));
+</script>
+</body>
+</html>
