@@ -1,0 +1,17 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(s){
+    const lowerCase= s.replaceAll(/[^a-zA-Z]/g, '').toLowerCase()
+    return lowerCase.split('').reverse().join('') === lowerCase ? 'YES' : 'NO';
+  }
+
+  let str="found7, time: study; Yduts; emit, 7Dnuof";
+  console.log(solution(str));
+</script>
+</body>
+</html>
