@@ -1,0 +1,25 @@
+
+3-3. 숫자만추출.pdf
+23 10월 2023, 11:43 오후
+
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(str){
+    let answer="";
+    str.split('').forEach(value => {
+      if(+value >= 0) answer += value
+    })
+    return parseInt(answer);
+  }
+
+  let str="g0en2T0s8eSoft";
+  console.log(solution(str));
+</script>
+</body>
+</html>
