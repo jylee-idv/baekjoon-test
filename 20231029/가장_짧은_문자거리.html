@@ -9,20 +9,18 @@
     const temp = []
     const splitSting = s.split('')
     splitSting.forEach((value, index) => {
-      if (value === t) {
-        temp.push(index)
-      }
+      if (value === t) temp.push(index)
     })
     return splitSting.map((value, index) => {
       const [smallIndex, bigIndex] = temp
       if (smallIndex >= index) return smallIndex - index
       if (index - smallIndex < bigIndex - index || !bigIndex) return smallIndex ? index - smallIndex : null
-      temp.splice(0, 1)
+      temp.shift()
       return bigIndex - index
     })
   }
 
-  let str = "teachermode";
+  let str = "teacherㅁㄴㅇㄹ;ㅣ;ㅏㅁㄴㅇ러ㅏmode";
   console.log(solution(str, 'e'));
 </script>
 </body>
