@@ -1,0 +1,26 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(s) {
+    let count = 1
+    const splitString = s.split('')
+    return splitString.reduce((previousValue, currentValue, currentIndex) => {
+      if(previousValue.split('')[previousValue.split('').length - 1] !== currentValue) {
+        const result = count > 1 ? previousValue + count + currentValue : previousValue + currentValue
+        count = 1
+        return result
+      }
+      count++
+      return splitString.length - 1 === currentIndex ? previousValue + count : previousValue
+    })
+  }
+
+  let str = "KKEEAASKKKAAAA";
+  console.log(solution(str));
+</script>
+</body>
+</html>
